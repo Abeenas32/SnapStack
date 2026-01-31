@@ -1,0 +1,30 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+model User {
+   id               String     @id @default(uuid())
+   email            String     @unique  
+   hashedPassword   String   
+   createdAt        DateTime   @default(now())
+   updatedAt        DateTime? 
+   files            File[]   
+}
+
+model File {
+   id               String      @id @default(uuid())
+   user             User        @relation(fields: [userId], references: [id])
+   userId           String
+   fileName         String
+   fileType         String 
+   mimeType         String 
+   size             BigInt
+   storagePath      String
+   createdAt        DateTime    @default(now())
+   updatedAt        DateTime?
+}
