@@ -1,0 +1,9 @@
+import z from "zod";
+
+export const loginSchema = z.object({
+    email: z.string().email().trim().toLowerCase(),
+    password: z.string().min(8, "Password must be at least 8 characters long").trim(),
+}).strict();
+
+export type LoginSchema = z.infer<typeof loginSchema>;
+
