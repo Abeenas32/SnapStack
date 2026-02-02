@@ -1,5 +1,6 @@
 import express from "express";
-import registerRouter from "../src/routes/register.service"
+import registerRouter from "./routes/register.route";
+import loginRouter from "./routes/login.route";
 import cors from "cors";
 
 const app = express();
@@ -10,6 +11,7 @@ app.get("/",(req, res) =>  {
 
 const PORT = 8000;
 app.use("/users", registerRouter);
+app.use("/users",loginRouter);
 
 app.listen(PORT, () =>  {
      console.log("Backend running in the port", PORT);
