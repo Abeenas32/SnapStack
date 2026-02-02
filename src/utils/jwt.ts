@@ -1,7 +1,7 @@
 import jwt, { type JwtPayload } from "jsonwebtoken";
 
 
-const accessToken = process.env.ACCESS_TOKEN_SECRET;
+const accessToken = process.env.ACCESSTOKEN_SECRET;
 if (!accessToken) {
     throw new Error("ACCESS_TOKEN_SECRET is not defined");
 }
