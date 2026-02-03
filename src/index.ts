@@ -1,6 +1,7 @@
 import express from "express";
 import registerRouter from "./routes/register.route";
 import loginRouter from "./routes/login.route";
+import uploadRouter from  "./routes/upload.route";
 import cors from "cors";
 
 const app = express();
@@ -12,7 +13,8 @@ app.get("/",(req, res) =>  {
 const PORT = 8000;
 app.use("/users", registerRouter);
 app.use("/users",loginRouter);
+app.use("/upload",uploadRouter);
 
 app.listen(PORT, () =>  {
      console.log("Backend running in the port", PORT);
-})
+});

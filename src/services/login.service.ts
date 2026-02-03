@@ -22,7 +22,5 @@ export const loginUser = async (input: LoginSchema) => {
     }
     const token = generateAccessToken(user.id, user.email);
     const { hashedPassword: _, ...safeUser } = user;
-    return { token, user: safeUser }
-
-
+    return { token, user: safeUser };
 }

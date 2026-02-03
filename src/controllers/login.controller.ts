@@ -15,6 +15,11 @@ export const loginUser_ = async (req:Request, res :Response) => {
              });
          }
          const { token , user} = await loginUser({email, password});
+         res.cookie("access_Token", token, {
+            httpOnly: true,     
+            sameSite: "strict", 
+            maxAge: 15 * 60 * 1000 
+        });
          console.log("Logged in successfully");
          console.log(`userId : ${user.id}`);
          console.log(`email : ${user.email}`);
